@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // Used to remove Debug Mode Banner from Screen
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -53,8 +54,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: ListView(
         children: <Widget>[
+          // _top() function defined on line 190
           _top(),
           SizedBox(height: 20,),
+          // Creates a row to display text in a horizontal way
           Padding(
               padding: EdgeInsets.all(16),
             child: Row(
@@ -73,11 +76,13 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           SizedBox(height: 20,),
+          // Grid to contain all the icons and text
           Container(
             height: 200,
             child: GridView(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, childAspectRatio: 3/2),
               children: <Widget>[
+                // _gridItem() function defined at line 168
                 _gridItem(Icons.airport_shuttle, "Travel"),
                 _gridItem(Icons.add_shopping_cart, "Shopping"),
                 _gridItem(Icons.arrow_drop_down_circle, "More"),
@@ -98,16 +103,20 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
+          //_cardItem() function defined at line 114
           _cardItem(1),
         ],
       ),
     );
   }
 }
+
+// Used to create a card that contains an image and text
 _cardItem(image){
   return Padding(
       padding: EdgeInsets.all(16), child: Row(
     children: [
+      // Container for the Image
       Container(
         width: 100,
         height: 100,
@@ -116,10 +125,12 @@ _cardItem(image){
             image: NetworkImage("https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
             fit: BoxFit.cover,
           ),
+          // Gives the Image a circular border
           borderRadius: BorderRadius.circular(20),
         ),
       ),
       SizedBox(height: 20,),
+      // Displays text in a vertical manner
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -153,6 +164,7 @@ _cardItem(image){
   );
 }
 
+// Used to create an Item in the grid with specified icon and text
 _gridItem(icon, text){
   return Column(
     children: [
@@ -174,6 +186,7 @@ _gridItem(icon, text){
   );
 }
 
+// Creates the top area of the page
 _top(){
   return Container(
     padding: EdgeInsets.all(16),
@@ -199,7 +212,7 @@ _top(){
               ],
             ),
             IconButton(
-                onPressed: (){},
+                onPressed: (){}, // Placeholder, can be implemented
                 icon: Icon(
                   Icons.notifications,
                   color: Colors.white,
@@ -208,6 +221,7 @@ _top(){
           ],
         ),
         SizedBox(height: 30,),
+        // Creates the Search TextField
         TextField(
           decoration: InputDecoration(
             hintText: "Search",
